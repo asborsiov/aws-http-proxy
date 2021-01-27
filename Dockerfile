@@ -1,9 +1,5 @@
 FROM alpine:3.12
 
-# TODO: Various optional modules are currently disabled (see output of ./configure):
-# - Libwrap is disabled because tcpd.h is missing.
-# - BSD Auth is disabled because bsd_auth.h is missing.
-# - ...
 
 RUN set -x \
     # Runtime dependencies.
@@ -32,10 +28,8 @@ RUN set -x \
  && rm -rf /tmp/* \
  && apk del --purge .build-deps
 
-# Default configuration
+RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
 COPY sockd.conf /etc/
+COPY init.py /
 
-EXPOSE 1080
-
-ENTRYPOINT ["dumb-init"]
-CMD ["sockd"]
+ENTRYPOINT python /init.py
