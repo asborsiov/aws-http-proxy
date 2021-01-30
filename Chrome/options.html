@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head><title>Proxy settings</title></head>
+<body>
+
+API full URL:
+<br>
+<input type="checkbox" id="apiUrlLock">Show <input type="password" id="apiUrl" value="" size="50">
+<br>
+<br>
+API access key
+<br>
+<input type="checkbox" id="apiKeyLock">Show <input type="password" id="apiKey" value="" size="50">
+<br>
+<br>
+Region:
+<div>
+<select id="region">
+ <option value="us-east-1">us-east-1</option>
+ <option value="us-west-1">us-west-1</option>
+ <option value="eu-central-1">eu-central-1</option>
+ <option value="eu-west-1">eu-west-1</option>
+ <option value="ap-northeast-1">ap-northeast-1</option>
+</select>
+</div>
+
+<br>
+Proxy lifetime in minutes:
+<div class="slidecontainer">
+  <input type="range" min="1" max="30" value="5" class="slider" id="timeRange">
+<span id="time"></span>
+</div>
+</div>
+<div id="status"></div>
+<button id="save">Save</button>
+
+<script src="options.js"></script>
+</body>
+</html>
